@@ -3,8 +3,8 @@ package service
 import (
 	"github.com/go-playground/locales/zh"
 	ut "github.com/go-playground/universal-translator"
-	"github.com/go-playground/validator"
-	translations "github.com/go-playground/validator/translations/zh"
+	"gopkg.in/go-playground/validator.v9"
+	translations "gopkg.in/go-playground/validator.v9/translations/zh"
 	"reflect"
 )
 

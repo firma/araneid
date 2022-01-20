@@ -12,8 +12,8 @@ import (
 	_func "github.com/beatrice950201/araneid/extend/func"
 	table "github.com/beatrice950201/araneid/extend/func"
 	"github.com/beatrice950201/araneid/extend/model/attachment"
-	"github.com/go-playground/validator"
-	"github.com/upyun/go-sdk/upyun"
+	"github.com/upyun/go-sdk/v3/upyun"
+	"gopkg.in/go-playground/validator.v9"
 	"io"
 	"io/ioutil"
 	"mime/multipart"
@@ -44,6 +44,7 @@ func (service *DefaultAdjunctService) aliveNum() int64 {
 /**  下载远程附件下载到第三方 **/
 func (service *DefaultAdjunctService) DownloadFileCloud(url string, cloud map[string]string) string {
 	up := upyun.NewUpYun(&upyun.UpYunConfig{Bucket: cloud["bucket"], Operator: cloud["name"], Password: cloud["password"]})
+	//up := upyun.NewUpYun ( cloud["bucket"], cloud["name"],  cloud["password"])
 	local := service.DownloadFileLocal(url)
 	if local != url {
 		if err := up.Put(&upyun.PutObjectConfig{Path: "/" + local, LocalPath: local}); err != nil {

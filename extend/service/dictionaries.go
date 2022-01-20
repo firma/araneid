@@ -10,7 +10,7 @@ import (
 	table "github.com/beatrice950201/araneid/extend/func"
 	"github.com/beatrice950201/araneid/extend/model/dictionaries"
 	ccst "github.com/go-cc/cc-jianfan"
-	"github.com/go-playground/validator"
+	"gopkg.in/go-playground/validator.v9"
 	"github.com/gocolly/colly"
 	"io/ioutil"
 	"net/http"

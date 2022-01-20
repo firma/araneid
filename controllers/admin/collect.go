@@ -8,7 +8,7 @@ import (
 	_func "github.com/beatrice950201/araneid/extend/func"
 	"github.com/beatrice950201/araneid/extend/model/collect"
 	"github.com/beatrice950201/araneid/extend/service"
-	"github.com/go-playground/validator"
+	"gopkg.in/go-playground/validator.v9"
 )
 
 type Collect struct {

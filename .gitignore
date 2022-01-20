@@ -5,6 +5,8 @@ araneid.exe
 araneid
 araneid.exe~
 .DS_Store
+vendor/*
+vendor
 
 /static/data/*
 !/static/data/cache

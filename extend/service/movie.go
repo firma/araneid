@@ -9,7 +9,7 @@ import (
 	"github.com/astaxie/beego/orm"
 	table "github.com/beatrice950201/araneid/extend/func"
 	"github.com/beatrice950201/araneid/extend/model/movie"
-	"github.com/go-playground/validator"
+	"gopkg.in/go-playground/validator.v9"
 	"github.com/gocolly/colly"
 	"github.com/qiniu/iconv"
 	"github.com/saintfish/chardet"

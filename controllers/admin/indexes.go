@@ -7,7 +7,7 @@ import (
 	"github.com/beatrice950201/araneid/controllers"
 	_func "github.com/beatrice950201/araneid/extend/func"
 	"github.com/beatrice950201/araneid/extend/model/spider"
-	"github.com/go-playground/validator"
+	"gopkg.in/go-playground/validator.v9"
 	"strconv"
 )
 
@@ -112,7 +112,7 @@ func (c *Indexes) Import() {
 		file := c.GetMustInt("files", "请上传正确格式的xlsx文件！")
 		path := c.adjunctService.FindId(file).Path
 		if f, err := excelize.OpenFile("." + path); err == nil {
-			rows, _ := f.GetRows("Sheet1")
+			rows := f.GetRows("Sheet1")
 			var items []*spider.Indexes
 			for _, row := range rows {
 				if len(row) == 2 {

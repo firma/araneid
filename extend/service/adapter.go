@@ -26,9 +26,12 @@ func (service *DefaultAdapterService) ZhanzhangExtract(id, length, form int, fil
 	path := new(DefaultAdjunctService).FindId(id).Path
 	service.createInitialized(length, form, filtration, extract)
 	if f, message := excelize.OpenFile("." + path); message == nil {
-		for _, sheet := range f.GetSheetList() {
-			rows, _ := f.GetRows(sheet)
-			for _, row := range rows {
+
+		//for _, sheet := range f.GetSheetList() {
+			for _, sheet := range f.GetSheetMap() {
+			//rows, _ := f.GetRows(sheet)
+			//rows, err := f.GetRows(sheet)
+			for _, row := range  f.GetRows(sheet) {
 				if len(row) == 9 && row[0] != "" && row[7] != "" && row[8] != "" {
 					if item, message := service.extractUrlsContextRuleHandle(row[0], row[7], row[0], row[7], row[8]); message == nil {
 						result = append(result, item)
@@ -99,10 +102,11 @@ func (service *DefaultAdapterService) CreateXLSXFile(result []*spider.Class) (st
 	index := f.NewSheet("Sheet1")
 	for k, v := range result {
 		indexes := k + 1
-		_ = f.SetCellValue("Sheet1", "A"+strconv.Itoa(indexes), v.Name)
-		_ = f.SetCellValue("Sheet1", "B"+strconv.Itoa(indexes), v.Title)
-		_ = f.SetCellValue("Sheet1", "C"+strconv.Itoa(indexes), v.Keywords)
-		_ = f.SetCellValue("Sheet1", "D"+strconv.Itoa(indexes), v.Description)
+		//f.SetCellValue("Sheet1", k, v)
+		f.SetCellValue("Sheet1", "A"+strconv.Itoa(indexes), v.Name)
+		f.SetCellValue("Sheet1", "B"+strconv.Itoa(indexes), v.Title)
+		f.SetCellValue("Sheet1", "C"+strconv.Itoa(indexes), v.Keywords)
+		f.SetCellValue("Sheet1", "D"+strconv.Itoa(indexes), v.Description)
 	}
 	f.SetActiveSheet(index)
 	path, _ := new(DefaultAdjunctService).DateFolder(beego.AppConfig.String("upload_folder") + "/sandbox/")

@@ -11,7 +11,7 @@ import (
 	"github.com/astaxie/beego/orm"
 	table "github.com/beatrice950201/araneid/extend/func"
 	"github.com/beatrice950201/araneid/extend/model/spider"
-	"github.com/go-playground/validator"
+	"gopkg.in/go-playground/validator.v9"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	tencent "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"

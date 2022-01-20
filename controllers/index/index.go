@@ -7,7 +7,7 @@ import (
 	"github.com/beatrice950201/araneid/controllers"
 	"github.com/beatrice950201/araneid/extend/model/index"
 	"github.com/beatrice950201/araneid/extend/model/spider"
-	"github.com/go-playground/validator"
+	"gopkg.in/go-playground/validator.v9"
 )
 
 type Index struct{ Main }

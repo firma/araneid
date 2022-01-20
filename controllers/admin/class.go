@@ -8,7 +8,7 @@ import (
 	"github.com/beatrice950201/araneid/controllers"
 	_func "github.com/beatrice950201/araneid/extend/func"
 	"github.com/beatrice950201/araneid/extend/model/spider"
-	"github.com/go-playground/validator"
+	"gopkg.in/go-playground/validator.v9"
 	"strconv"
 )
 
@@ -45,9 +45,10 @@ func (c *Class) Import() {
 		path := c.adjunctService.FindId(file).Path
 		if f, err := excelize.OpenFile("." + path); err == nil {
 			var items []*spider.Class
-			for _, sheet := range f.GetSheetList() {
-				rows, _ := f.GetRows(sheet)
-				for _, row := range rows {
+			//for _, sheet := range f.GetSheetList() {
+				for _, sheet := range f.GetSheetMap() {
+				//rows, _ := f.GetRows(sheet)
+				for _, row := range f.GetRows(sheet) {
 					if len(row) >= 4 && c.classService.OneExtends(row[0]).Id == 0 {
 						items = append(items, &spider.Class{
 							Model:       model,

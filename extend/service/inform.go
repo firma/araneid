@@ -7,7 +7,7 @@ import (
 	"github.com/astaxie/beego/orm"
 	table "github.com/beatrice950201/araneid/extend/func"
 	"github.com/beatrice950201/araneid/extend/model/inform"
-	"github.com/go-playground/validator"
+	"gopkg.in/go-playground/validator.v9"
 	"time"
 )
 

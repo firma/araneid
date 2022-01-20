@@ -7,7 +7,7 @@ import (
 	"github.com/beatrice950201/araneid/controllers"
 	_func "github.com/beatrice950201/araneid/extend/func"
 	"github.com/beatrice950201/araneid/extend/model/spider"
-	"github.com/go-playground/validator"
+	"gopkg.in/go-playground/validator.v9"
 	"strconv"
 )
 
@@ -67,8 +67,10 @@ func (c *Keyword) Import() {
 		path := c.adjunctService.FindId(file).Path
 		if f, err := excelize.OpenFile("." + path); err == nil {
 			var items []*spider.Keyword
-			for _, sheet := range f.GetSheetList() {
-				rows, _ := f.GetRows(sheet)
+			//for _, sheet := range f.GetSheetList() {
+			for _, sheet := range f.GetSheetMap() {
+
+				rows := f.GetRows(sheet)
 				for _, row := range rows {
 					if len(row) >= 1 && c.keywordService.OneExtends(row[0]).Id == 0 {
 						items = append(items, &spider.Keyword{Arachnid: arachnid, Title: row[0]})

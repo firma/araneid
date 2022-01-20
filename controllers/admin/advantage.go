@@ -7,7 +7,7 @@ import (
 	"github.com/beatrice950201/araneid/controllers"
 	table "github.com/beatrice950201/araneid/extend/func"
 	"github.com/beatrice950201/araneid/extend/model/index"
-	"github.com/go-playground/validator"
+	"gopkg.in/go-playground/validator.v9"
 )
 
 /** 功能与优势 **/
